@@ -1,24 +1,33 @@
-let text = document.getElementById('text');
-let hill1 = document.getElementById('hill1');
-let hill2 = document.getElementById('hill2');
-let hill3 = document.getElementById('hill3');
-let hill4 = document.getElementById('hill4');
+import {
+    scroll,
+    animate
+  } from "https://cdn.skypack.dev/motion@10.13.1";
 
-window.addEventListener('scroll', () => {
-    let value = window.scrollY;
+  const $cardsWrapper = document.querySelector('#cards');
+  const $cards = document.querySelectorAll('.card');
 
-    // Calculate the scroll position relative to each image's position
-    // let hill1Scroll = value - hill1.offsetTop;
-    // let hill2Scroll = value - hill2.offsetTop;
-    // let hill3Scroll = value - hill3.offsetTop;
-    // let hill4Scroll = value - hill4.offsetTop;
+  const numCards = $cards.length;
 
-    // Apply different effects based on scroll positions
-    text.style.marginTop = value * 2.5 + 'px';
+  $cards.forEach(($card, index0) => {
 
-    // Eeffects for each image
-    if(hill1.style.marginBottom > 0) hill1.style.marginTop = value * -1 + 'px'; // probat nesta sa ovim ifom - ovo kao string vraca
-    hill2.style.marginTop = value * 2 + 'px';
-    // hill3.style.marginTop = value * -0.7 + 'px';
-    // hill4.style.marginTop = value * -1 + 'px';
-});
+    const index = index0 + 1;
+    const reverseIndex = numCards - index0;
+    const reverseIndex0 = numCards - index0;
+
+    // Extra padding per card, so you can see the other stacked cards underneath at the top
+    $card.style.paddingTop = `calc(${index} * var(--card-top-offset))`;
+
+    // Scroll-Linked Animation
+    scroll(
+      animate($card, {
+        // Earlier cards shrink more than later cards
+        scale: [1, 1 - 0.1 * reverseIndex0]
+      }), {
+        // Each card should only shrink when it’s at the top.
+        // We can’t use exit on the els for this (as they are sticky)
+        // but can track $cardsWrapper instead.
+        target: $cardsWrapper,
+        offset: [`${index0 / numCards * 100}%`, `${index / numCards * 100}%`]
+      });
+
+  });

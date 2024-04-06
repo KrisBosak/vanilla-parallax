@@ -1,22 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Parallax Masline</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <section class="parallax">
-            <!-- <img src="../assets/brijeg2.png" alt="Hill4" id="hill4">
-            <img src="../assets/brdoc2.png" alt="Hill3" id="hill3"> -->
-            <img src="../assets/brijeg1.png" alt="Hill2" id="hill2">
-            <h2 id="text">Masline</h2>
-            <img src="../assets/brdoc1.png" alt="Hill1" id="hill1">
-            <h2 id="text">Masline2</h2>
-        </section>
 
-        <script src="scripts.js"></script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Uljara Laća - Scroll</title>
+
+  <style>
+    :root {
+      --card-height: 40vw;
+      --card-margin: 10vw;
+      --card-top-offset: 1em;
+      --numcards: 5;
+      --outline-width: 0px;
+    }
+
+    #cards {
+      padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+      /* Make place at bottom, as items will slide to that position*/
+      margin-bottom: var(--card-margin);
+      /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+    }
+
+    .card {
+      position: sticky;
+      top: 0;
+      padding-top: var(--card-top-offset);
+      transform-origin: 50% 0%;
+      will-change: transform;
+    }
+    /** PAGE STYLING **/
+
+    * {
+      /* Poor Man's Reset */
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: olive;
+      font-size: calc(1em + 0.5vw);
+    }
+
+    header,
+    main {
+      width: 100vw;
+      margin: 0 auto;
+    }
+
+    #cards {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(var(--numcards), var(--card-height));
+      gap: var(--card-margin);
+    }
+
+    /* .card__content {
+      box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+      background: rgb(255, 255, 255);
+      color: rgb(10, 5, 7);
+      border-radius: 1em;
+      overflow: hidden;
+      display: grid;
+      grid-template-areas: "text img";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      align-items: stretch;
+      outline: var(--outline-width) solid lime;
+    } */
+
+    /* .card>div {
+      grid-area: text;
+      width: 100%;
+      place-self: center;
+      text-align: left;
+      display: grid;
+      gap: 1em;
+      place-items: start;
+    } */
+
+    /* h1 {
+      font-weight: 300;
+      font-size: 3.5em;
+    }
+
+    h2 {
+      font-weight: 300;
+      font-size: 2.5em;
+    }
+
+    p {
+      font-family: sans-serif;
+      font-weight: 300;
+      line-height: 1.42;
+    } */
+    
+    .container {
+      position: relative;
+      text-align: center;
+      color: black;
+      width: 100%;
+    }
+
+    .centered {
+      position: absolute;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn {
+      background: rgb(188 87 36);
+      color: rgb(255 255 255);
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.5em;
+      border-radius: 0.25em;
+    }
+
+    img{
+      width: 80vw;
+      height: 110vh;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <ul id="cards">
+      <li class="card" id="card_1" style="margin-top: 15%;">
+        <div>
+          <div class="container">
+            <img src="../assets/brdoc1.png" alt="">
+            <div class="centered" style="left: 35%; top: 55%;">
+              <h3>stickeri nagrada koje mogu nestati kada se krene scrollati.</h3>
+            </div>
+          </div>
+      </li>
+      <li class="card" id="card_2">
+        <div>
+          <div class="container">
+            <img src="../assets/brijeg2.png" alt="">
+            <div class="centered" style="left: 60%;">
+              <h1>Naša tradicija</h1>
+            </div>
+          </div>
+      </li>
+      <li class="card" id="card_3">
+        <div >
+          <div class="container">
+            <img src="../assets/brdoc1.png" alt="">
+            <div class="centered" style="left: 30%;">
+              <h1>Kušaonica</h1>
+            </div>
+          </div>
+      </li>
+      <li class="card" id="card_4">
+        <div>
+          <div class="container">
+            <img src="../assets/brijeg2.png" alt="">
+            <div class="centered" style="left: 20%; top: 70%">              
+              <img src="../assets/boca.png" style="height: auto; width: 9%;" alt="">              
+            </div>
+            <div class="centered" style="left: 30%;">
+              <h2>Premium</h2>
+            </div>
+            <div class="centered" style="top: 60%; left: 35%; font-size: large; width: 25%;">
+              <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p><a href="#top" class="btn btn--accent">Dodaj u košaricu</a></p>
+            </div>
+
+            <div class="centered" style="left: 83%; top: 70%">              
+              <img src="../assets/boca.png" style="height: auto; width: 125px;" alt="">              
+            </div>
+            <div class="centered" style="left: 70%; top: 65%;">
+              <h2>Strong</h2>
+            </div>
+            <div class="centered" style="top: 80%; left: 60%; font-size: large; width: 35%;">
+              <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p><a href="#top" class="btn btn--accent">Dodaj u košaricu</a></p>
+            </div>
+          </div>
+      </li>
+      <li class="card" id="card_5">
+        <div >
+          <div class="container">
+            <img src="../assets/brdoc1.png" alt="">
+            <div class="centered" style="left: 30%; top: 60%;">
+              <h1>Suradnja</h1>
+            </div>
+            <div class="centered" style="top: 70%;">
+              <h1>Kontakt</h1>
+            </div>
+            <div class="centered" style="top: 90%;">
+              <h3>stickeri nagrada ponovno</h3>
+            </div>
+          </div>
+      </li>
+      <!-- <li class="card" id="card_4">
+        <div class="card__content">
+          <div>
+            <h2>Card Four</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <figure>
+            <img src="https://codyhouse.co/demo-tutorials/stacking-cards/assets/img/img-2.jpg" alt="Image description">
+          </figure>
+        </div>
+      </li> -->
+    </ul>
+  </main>
+
+  <script id="rendered-js" type="module">
+
+    import {
+      scroll,
+      animate
+    } from "https://cdn.skypack.dev/motion@10.13.1";
+
+    const $cardsWrapper = document.querySelector('#cards');
+    const $cards = document.querySelectorAll('.card');
+
+    const numCards = $cards.length;
+
+    $cards.forEach(($card, index0) => {
+
+      const index = index0 + 1;
+      const reverseIndex = numCards - index0;
+      const reverseIndex0 = numCards - index0;
+
+      // Extra padding per card, so you can see the other stacked cards underneath at the top
+      $card.style.paddingTop = `calc(${index} * var(--card-top-offset))`;
+
+      // Scroll-Linked Animation
+      scroll(
+        animate($card, {
+          // Earlier cards shrink more than later cards
+          scale: [1, 1 - 0.1 * reverseIndex0]
+        }), {
+          // Each card should only shrink when it’s at the top.
+          // We can’t use exit on the els for this (as they are sticky)
+          // but can track $cardsWrapper instead.
+          target: $cardsWrapper,
+          offset: [`${index0 / numCards * 100}%`, `${index / numCards * 100}%`]
+        });
+
+    });
+  </script>
+</body>
 </html>

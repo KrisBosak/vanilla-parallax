@@ -1,35 +1,117 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-}
+:root {
+	--card-height: 40vw;
+	--card-margin: 10vw;
+	--card-top-offset: 1em;
+	--numcards: 5;
+	--outline-width: 0px;
+  }
 
-body {
-    background: olive;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+  #cards {
+	padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+	/* Make place at bottom, as items will slide to that position*/
+	margin-bottom: var(--card-margin);
+	/* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+  }
 
-#text {
-    position: absolute;
-    font-size: 5em;
-    color: blue;
-    text-shadow: 2px 2px 4px black;
-}
+  .card {
+	position: sticky;
+	top: 0;
+	padding-top: var(--card-top-offset);
+	transform-origin: 50% 0%;
+	will-change: transform;
+  }
+  /** PAGE STYLING **/
 
-.parallax {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+  * {
+	/* Poor Man's Reset */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+  }
 
-.parallax img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-}
+  body {
+	background: olive;
+	font-size: calc(1em + 0.5vw);
+  }
+
+  header,
+  main {
+	width: 100vw;
+	margin: 0 auto;
+  }
+
+  #cards {
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(var(--numcards), var(--card-height));
+	gap: var(--card-margin);
+  }
+
+  /* .card__content {
+	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+	background: rgb(255, 255, 255);
+	color: rgb(10, 5, 7);
+	border-radius: 1em;
+	overflow: hidden;
+	display: grid;
+	grid-template-areas: "text img";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	align-items: stretch;
+	outline: var(--outline-width) solid lime;
+  } */
+
+  /* .card>div {
+	grid-area: text;
+	width: 100%;
+	place-self: center;
+	text-align: left;
+	display: grid;
+	gap: 1em;
+	place-items: start;
+  } */
+
+  /* h1 {
+	font-weight: 300;
+	font-size: 3.5em;
+  }
+
+  h2 {
+	font-weight: 300;
+	font-size: 2.5em;
+  }
+
+  p {
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.42;
+  } */
+  
+  .container {
+	position: relative;
+	text-align: center;
+	color: black;
+	width: 100%;
+  }
+
+  .centered {
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+  }
+
+  .btn {
+	background: rgb(188 87 36);
+	color: rgb(255 255 255);
+	text-decoration: none;
+	display: inline-block;
+	padding: 0.5em;
+	border-radius: 0.25em;
+  }
+
+  img{
+	width: 80vw;
+	height: 110vh;
+  }
