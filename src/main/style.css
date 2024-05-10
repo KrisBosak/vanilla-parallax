@@ -1,6 +1,6 @@
 :root {
-	--card-height: 40vw;
-	--card-margin: 10vw;
+	--card-height: 35vh;
+	--card-margin: 15vw;
 	--card-top-offset: 1em;
 	--numcards: 5;
 	--outline-width: 0px;
@@ -17,10 +17,17 @@
 	position: sticky;
 	top: 0;
 	padding-top: var(--card-top-offset);
-	transform-origin: 50% 0%;
+	transform-origin: -10% 0%;
 	will-change: transform;
   }
   /** PAGE STYLING **/
+  
+  .container {
+	position: relative;
+	text-align: center;
+	color: black;
+	width: 100%;
+  }
 
   * {
 	/* Poor Man's Reset */
@@ -36,7 +43,7 @@
 
   header,
   main {
-	width: 100vw;
+	width: 100%;
 	margin: 0 auto;
   }
 
@@ -48,57 +55,8 @@
 	gap: var(--card-margin);
   }
 
-  /* .card__content {
-	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
-	background: rgb(255, 255, 255);
-	color: rgb(10, 5, 7);
-	border-radius: 1em;
-	overflow: hidden;
-	display: grid;
-	grid-template-areas: "text img";
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto;
-	align-items: stretch;
-	outline: var(--outline-width) solid lime;
-  } */
-
-  /* .card>div {
-	grid-area: text;
-	width: 100%;
-	place-self: center;
-	text-align: left;
-	display: grid;
-	gap: 1em;
-	place-items: start;
-  } */
-
-  /* h1 {
-	font-weight: 300;
-	font-size: 3.5em;
-  }
-
-  h2 {
-	font-weight: 300;
-	font-size: 2.5em;
-  }
-
-  p {
-	font-family: sans-serif;
-	font-weight: 300;
-	line-height: 1.42;
-  } */
-  
-  .container {
-	position: relative;
-	text-align: center;
-	color: black;
-	width: 100%;
-  }
-
   .centered {
 	position: absolute;
-	top: 50vh;
-	left: 50vw;
 	transform: translate(-50%, -50%);
   }
 
@@ -112,6 +70,6 @@
   }
 
   img{
-	width: 80vw;
-	height: 110vh;
+	width: 120%;
+	height: 100vh;
   }
